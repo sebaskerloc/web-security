@@ -1,0 +1,6 @@
+crear una base de datos en phpMyAdmin
+nombre: bdtest
+tabla: login
+insertar dos columnas: usuario y password
+tipo varchar, log-20.
+ 
