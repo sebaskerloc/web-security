@@ -10,7 +10,7 @@
 <table>
 <tr><td colspan="2" style="background-color:#33A8DB;padding-bottom:10px;"><label>Iniciar sesión</label></td></tr>
 
-<tr><td rowspan="6"><img src="candado.png"></td><td><label>Usuario</label></td></tr>
+<tr><td rowspan="6"><img src="candado.jpg"></td><td><label>Usuario</label></td></tr>
 
 <tr><td><input type="text" name="txtusuario" placeholder="Ingresar usuario" required /> </td></tr>
 
@@ -34,7 +34,7 @@
 session_start();
 if(isset($_SESSION['nombredelusuario']))
 {
-	header('location: pagina.php');
+	header('location: inicio.php');
 }
 
 if(isset($_POST['btningresar']))
@@ -54,20 +54,20 @@ if(isset($_POST['btningresar']))
 	$nombre=$_POST['txtusuario'];
 	$pass=$_POST['txtpassword'];
 	
-	$query=mysqli_query($conn,"Select * from login where usuario = '".$nombre."' and password = '".$pass."'");
-	$nr=mysqli_num_rows($query);
+	$query=mysqli_query($conn,"Select * from login where usuario = '".$_POST['txtusuario']."' and password = '".$_POST['txtpassword']."'");
+	
 	
 	if(!isset($_SESSION['nombredelusuario']))
 	{
-	if($nr == 1)
-	{
-		$_SESSION['nombredelusuario']=$nombre;
-		header("location: pagina.php");
-	}
-	else if ($nr == 0)
-	{
-		echo "<script>alert('Usuario no existe');window.location= 'index.php' </script>";
-	}
+		if($query) /*$nr == 1*/
+		{
+			$_SESSION['nombredelusuario']=$nombre;
+			header("location: inicio.php");
+		}
+		else /*nr == 0*/
+		{
+			echo "<script>alert('Usuario no existe');window.location= 'index.php' </script>";
+		}
 	}
 }
 ?>
