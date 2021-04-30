@@ -2,14 +2,14 @@ body
 {
 	margin:0;
 	padding:0;
-	background: url(fondo.jpg) no-repeat center top;
-	background-size: cover;
+	background-color: #C70039 ;
 	font-family: sans-serif;
 }
 
 table
 {
-	margin:0;
+    margin-top: 150px;
+    margin-bottom: 100px;
 	border: 2px solid #353A46;
 	background-color: #3ABAF1;
 	top: 50%;
